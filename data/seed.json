@@ -1,0 +1,122 @@
+{
+  "updatedAt": "2026-05-30T00:00:00.000Z",
+  "settings": {
+    "owner": "我的主页",
+    "subtitle": "Harith Home",
+    "welcome": "欢迎回来，今天也要元气满满哦~",
+    "quote": "如花美眷，似水流年。",
+    "locationLabel": "上海市 · 浦东新区",
+    "latitude": 31.2304,
+    "longitude": 121.4737
+  },
+  "music": [
+    {
+      "id": "track-sky",
+      "title": "青空のラプソディ",
+      "artist": "物语シリーズ OST",
+      "duration": 275,
+      "tone": 523.25,
+      "liked": true
+    },
+    {
+      "id": "track-sakura",
+      "title": "Sakura Home",
+      "artist": "Local Synth Demo",
+      "duration": 212,
+      "tone": 659.25,
+      "liked": false
+    },
+    {
+      "id": "track-night",
+      "title": "夜间巡航",
+      "artist": "Dashboard Loops",
+      "duration": 248,
+      "tone": 440,
+      "liked": false
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-knowledge",
+      "title": "个人知识库.md",
+      "kind": "md",
+      "size": "12.4 KB",
+      "updatedAt": "2026-05-30T14:12:00.000Z",
+      "source": "seed",
+      "storedName": "",
+      "mime": "text/markdown; charset=utf-8"
+    },
+    {
+      "id": "doc-plan",
+      "title": "项目计划书 v2.0.pdf",
+      "kind": "pdf",
+      "size": "2.1 MB",
+      "updatedAt": "2026-05-30T10:03:00.000Z",
+      "source": "seed",
+      "storedName": "",
+      "mime": "application/pdf"
+    },
+    {
+      "id": "doc-book",
+      "title": "读书笔记《小王子》.docx",
+      "kind": "word",
+      "size": "1.3 MB",
+      "updatedAt": "2026-05-29T22:18:00.000Z",
+      "source": "seed",
+      "storedName": "",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    }
+  ],
+  "favorites": [
+    { "id": "fav-bili", "title": "哔哩哔哩", "url": "https://www.bilibili.com", "icon": "哔", "color": "#24b7ee", "createdAt": "2026-05-30T00:00:00.000Z" },
+    { "id": "fav-sspai", "title": "少数派", "url": "https://sspai.com", "icon": "π", "color": "#e72835", "createdAt": "2026-05-30T00:00:00.000Z" },
+    { "id": "fav-github", "title": "GitHub", "url": "https://github.com", "icon": "GH", "color": "#101827", "createdAt": "2026-05-30T00:00:00.000Z" },
+    { "id": "fav-weibo", "title": "微博", "url": "https://weibo.com", "icon": "微", "color": "#e63737", "createdAt": "2026-05-30T00:00:00.000Z" },
+    { "id": "fav-v2ex", "title": "V2EX", "url": "https://v2ex.com", "icon": "V", "color": "#1d2430", "createdAt": "2026-05-30T00:00:00.000Z" },
+    { "id": "fav-pixiv", "title": "pixiv", "url": "https://www.pixiv.net", "icon": "P", "color": "#2d91ff", "createdAt": "2026-05-30T00:00:00.000Z" }
+  ],
+  "mails": [
+    {
+      "id": "mail-vps",
+      "sender": "系统通知",
+      "subject": "VPS 服务器续费提醒",
+      "body": "当前服务器续费提醒已进入待办列表，可以在 VPS 面板查看状态。",
+      "time": "2026-05-30T14:32:00.000Z",
+      "read": false,
+      "archived": false,
+      "icon": "🔔"
+    },
+    {
+      "id": "mail-github",
+      "sender": "GitHub",
+      "subject": "登录安全提醒",
+      "body": "检测到新的登录活动，请确认是否为本人操作。",
+      "time": "2026-05-30T12:18:00.000Z",
+      "read": false,
+      "archived": false,
+      "icon": "GH"
+    },
+    {
+      "id": "mail-support",
+      "sender": "服务商 Support",
+      "subject": "工单 [#6721] 已回复",
+      "body": "工单已有新的回复，建议登录服务商后台查看。",
+      "time": "2026-05-30T10:45:00.000Z",
+      "read": true,
+      "archived": false,
+      "icon": "✉"
+    }
+  ],
+  "todos": [
+    { "id": "todo-deploy", "title": "整理 VPS 部署脚本", "done": false, "createdAt": "2026-05-30T00:00:00.000Z" },
+    { "id": "todo-domain", "title": "配置域名和 HTTPS", "done": false, "createdAt": "2026-05-30T00:00:00.000Z" }
+  ],
+  "notes": [
+    {
+      "id": "note-first",
+      "title": "首页灵感",
+      "body": "保持樱花、蓝白、玻璃卡片和仪表盘布局。",
+      "createdAt": "2026-05-30T00:00:00.000Z"
+    }
+  ]
+}

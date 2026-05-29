@@ -3,77 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Sakura Home, a soft personal dashboard homepage with music, notes, links, weather, time, and server status."
-    />
+    <meta name="description" content="Sakura Home 本地前后端个人主页仪表盘" />
     <title>Sakura Home</title>
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
   </head>
   <body>
     <svg aria-hidden="true" class="icon-sprite">
-      <symbol id="icon-home" viewBox="0 0 24 24">
-        <path d="M3 11.5 12 4l9 7.5v8a1 1 0 0 1-1 1h-5.4v-5.5H9.4v5.5H4a1 1 0 0 1-1-1z" />
-      </symbol>
-      <symbol id="icon-doc" viewBox="0 0 24 24">
-        <path d="M6 3.5h8.2L18 7.3v13.2H6zm8 0v4h4" />
-        <path d="M8.7 11h6.6M8.7 14.3h6.6M8.7 17.6h4" />
-      </symbol>
-      <symbol id="icon-star" viewBox="0 0 24 24">
-        <path d="m12 3.8 2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6L7.1 19l.9-5.5-4-3.9 5.5-.8z" />
-      </symbol>
-      <symbol id="icon-music" viewBox="0 0 24 24">
-        <path d="M9 18.5a2.7 2.7 0 1 1-2.7-2.7H9V5.5l10-2v11a2.7 2.7 0 1 1-2-2.6V7.2L9 8.8z" />
-      </symbol>
-      <symbol id="icon-mail" viewBox="0 0 24 24">
-        <path d="M4 6h16v12H4z" />
-        <path d="m4 7 8 6 8-6" />
-      </symbol>
-      <symbol id="icon-weather" viewBox="0 0 24 24">
-        <path d="M16.3 17.5H8a4.2 4.2 0 1 1 .9-8.3 5.5 5.5 0 0 1 10.4 2.3 3 3 0 0 1-3 6z" />
-        <path d="M16.5 3.8v2.1M21 8.1l-1.7 1.2M12.6 5.6l-1-1.8" />
-      </symbol>
-      <symbol id="icon-clock" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="8.5" />
-        <path d="M12 7.4V12l3.2 2" />
-      </symbol>
-      <symbol id="icon-server" viewBox="0 0 24 24">
-        <path d="M5 4h14v6H5zM5 14h14v6H5z" />
-        <path d="M8 7h.1M8 17h.1M11 7h5M11 17h5" />
-      </symbol>
-      <symbol id="icon-settings" viewBox="0 0 24 24">
-        <path d="M12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z" />
-        <path d="m4.7 10.3 1.7-1-.1-2 2-.8 1.3 1.4 2-.2.9-1.7 2.1.5.2 1.9 1.7 1.2 1.8-.7 1.1 1.9-1.4 1.4.2 2 1.6 1-.9 2-2-.2-1.5 1.3.2 2-2.1.6-1-1.7-2-.1-1.2 1.5-1.9-1 .7-1.9-1.1-1.7-2 .1-.5-2.1 1.7-1.1z" />
-      </symbol>
-      <symbol id="icon-logout" viewBox="0 0 24 24">
-        <path d="M10 5H5v14h5M14 8l4 4-4 4M18 12H9" />
-      </symbol>
-      <symbol id="icon-folder" viewBox="0 0 24 24">
-        <path d="M3.5 6h6l1.8 2H20v10.5H3.5z" />
-      </symbol>
-      <symbol id="icon-heart" viewBox="0 0 24 24">
-        <path d="M12 20s-7.4-4.4-8.4-9.3C2.9 7.4 5.4 5 8.2 5c1.6 0 3 .8 3.8 2 1-1.2 2.2-2 3.8-2 2.8 0 5.3 2.4 4.6 5.7C19.4 15.6 12 20 12 20z" />
-      </symbol>
-      <symbol id="icon-play" viewBox="0 0 24 24">
-        <path d="M8 5.8v12.4L18 12z" />
-      </symbol>
-      <symbol id="icon-pause" viewBox="0 0 24 24">
-        <path d="M8 5.8h3.2v12.4H8zM12.8 5.8H16v12.4h-3.2z" />
-      </symbol>
-      <symbol id="icon-bell" viewBox="0 0 24 24">
-        <path d="M7 10.4a5 5 0 0 1 10 0v3.7l1.5 2.4h-13L7 14.1zM10.2 18.8a2.2 2.2 0 0 0 3.6 0" />
-      </symbol>
-      <symbol id="icon-calendar" viewBox="0 0 24 24">
-        <path d="M5 5.5h14v14H5zM5 9h14M8 3.8v3.5M16 3.8v3.5" />
-        <path d="M8.2 12.2h2.2M13.7 12.2H16M8.2 15.4h2.2M13.7 15.4H16" />
-      </symbol>
-      <symbol id="icon-plus" viewBox="0 0 24 24">
-        <path d="M12 5v14M5 12h14" />
-      </symbol>
-      <symbol id="icon-upload" viewBox="0 0 24 24">
-        <path d="M12 16V5M8 9l4-4 4 4M5 16.5a3.5 3.5 0 0 0 3.5 3.5h7a3.5 3.5 0 0 0 3.5-3.5" />
-      </symbol>
+      <symbol id="icon-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5v8a1 1 0 0 1-1 1h-5.4v-5.5H9.4v5.5H4a1 1 0 0 1-1-1z" /></symbol>
+      <symbol id="icon-doc" viewBox="0 0 24 24"><path d="M6 3.5h8.2L18 7.3v13.2H6zm8 0v4h4" /><path d="M8.7 11h6.6M8.7 14.3h6.6M8.7 17.6h4" /></symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 3.8 2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6L7.1 19l.9-5.5-4-3.9 5.5-.8z" /></symbol>
+      <symbol id="icon-music" viewBox="0 0 24 24"><path d="M9 18.5a2.7 2.7 0 1 1-2.7-2.7H9V5.5l10-2v11a2.7 2.7 0 1 1-2-2.6V7.2L9 8.8z" /></symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M4 6h16v12H4z" /><path d="m4 7 8 6 8-6" /></symbol>
+      <symbol id="icon-weather" viewBox="0 0 24 24"><path d="M16.3 17.5H8a4.2 4.2 0 1 1 .9-8.3 5.5 5.5 0 0 1 10.4 2.3 3 3 0 0 1-3 6z" /><path d="M16.5 3.8v2.1M21 8.1l-1.7 1.2M12.6 5.6l-1-1.8" /></symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.4V12l3.2 2" /></symbol>
+      <symbol id="icon-server" viewBox="0 0 24 24"><path d="M5 4h14v6H5zM5 14h14v6H5z" /><path d="M8 7h.1M8 17h.1M11 7h5M11 17h5" /></symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z" /><path d="m4.7 10.3 1.7-1-.1-2 2-.8 1.3 1.4 2-.2.9-1.7 2.1.5.2 1.9 1.7 1.2 1.8-.7 1.1 1.9-1.4 1.4.2 2 1.6 1-.9 2-2-.2-1.5 1.3.2 2-2.1.6-1-1.7-2-.1-1.2 1.5-1.9-1 .7-1.9-1.1-1.7-2 .1-.5-2.1 1.7-1.1z" /></symbol>
+      <symbol id="icon-logout" viewBox="0 0 24 24"><path d="M10 5H5v14h5M14 8l4 4-4 4M18 12H9" /></symbol>
+      <symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3.5 6h6l1.8 2H20v10.5H3.5z" /></symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20s-7.4-4.4-8.4-9.3C2.9 7.4 5.4 5 8.2 5c1.6 0 3 .8 3.8 2 1-1.2 2.2-2 3.8-2 2.8 0 5.3 2.4 4.6 5.7C19.4 15.6 12 20 12 20z" /></symbol>
+      <symbol id="icon-play" viewBox="0 0 24 24"><path d="M8 5.8v12.4L18 12z" /></symbol>
+      <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M8 5.8h3.2v12.4H8zM12.8 5.8H16v12.4h-3.2z" /></symbol>
+      <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M7 10.4a5 5 0 0 1 10 0v3.7l1.5 2.4h-13L7 14.1zM10.2 18.8a2.2 2.2 0 0 0 3.6 0" /></symbol>
+      <symbol id="icon-calendar" viewBox="0 0 24 24"><path d="M5 5.5h14v14H5zM5 9h14M8 3.8v3.5M16 3.8v3.5" /><path d="M8.2 12.2h2.2M13.7 12.2H16M8.2 15.4h2.2M13.7 15.4H16" /></symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 16V5M8 9l4-4 4 4M5 16.5a3.5 3.5 0 0 0 3.5 3.5h7a3.5 3.5 0 0 0 3.5-3.5" /></symbol>
+      <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 11v6M14 11v6M8 7l1-3h6l1 3M7 7l1 13h8l1-13" /></symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10" /></symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8" /><path d="M10 6H6v12h12v-4" /></symbol>
     </svg>
 
     <div class="petal-field" aria-hidden="true">
@@ -83,50 +40,28 @@
     <div class="app-shell">
       <aside class="sidebar" aria-label="主导航">
         <a class="brand" href="#" aria-label="Sakura Home">
-          <span class="avatar">
-            <img src="./assets/sakura-room.png" alt="" />
-          </span>
+          <span class="avatar"><img src="./assets/sakura-room.png" alt="" /></span>
           <span>
-            <strong>我的主页</strong>
-            <small>Harith Home</small>
+            <strong id="brand-owner">我的主页</strong>
+            <small id="brand-subtitle">Harith Home</small>
           </span>
           <span class="brand-flower">✿</span>
         </a>
 
         <nav class="nav-list">
-          <button class="nav-item active" type="button" data-target="home">
-            <svg><use href="#icon-home"></use></svg><span>首页</span>
-          </button>
-          <button class="nav-item" type="button" data-target="docs">
-            <svg><use href="#icon-doc"></use></svg><span>文档</span>
-          </button>
-          <button class="nav-item" type="button" data-target="favorites">
-            <svg><use href="#icon-star"></use></svg><span>收藏</span>
-          </button>
-          <button class="nav-item" type="button" data-target="music">
-            <svg><use href="#icon-music"></use></svg><span>音乐</span>
-          </button>
-          <button class="nav-item" type="button" data-target="mail">
-            <svg><use href="#icon-mail"></use></svg><span>邮件</span>
-          </button>
-          <button class="nav-item" type="button" data-target="weather">
-            <svg><use href="#icon-weather"></use></svg><span>天气</span>
-          </button>
-          <button class="nav-item" type="button" data-target="time">
-            <svg><use href="#icon-clock"></use></svg><span>时间</span>
-          </button>
-          <button class="nav-item" type="button" data-target="vps">
-            <svg><use href="#icon-server"></use></svg><span>VPS 状态</span>
-          </button>
+          <button class="nav-item active" type="button" data-target="home"><svg><use href="#icon-home"></use></svg><span>首页</span></button>
+          <button class="nav-item" type="button" data-target="docs"><svg><use href="#icon-doc"></use></svg><span>文档</span></button>
+          <button class="nav-item" type="button" data-target="favorites"><svg><use href="#icon-star"></use></svg><span>收藏</span></button>
+          <button class="nav-item" type="button" data-target="music"><svg><use href="#icon-music"></use></svg><span>音乐</span></button>
+          <button class="nav-item" type="button" data-target="mail"><svg><use href="#icon-mail"></use></svg><span>邮件</span></button>
+          <button class="nav-item" type="button" data-target="weather"><svg><use href="#icon-weather"></use></svg><span>天气</span></button>
+          <button class="nav-item" type="button" data-target="time"><svg><use href="#icon-clock"></use></svg><span>时间</span></button>
+          <button class="nav-item" type="button" data-target="vps"><svg><use href="#icon-server"></use></svg><span>VPS 状态</span></button>
         </nav>
 
         <div class="sidebar-footer">
-          <button class="nav-item subtle" type="button">
-            <svg><use href="#icon-settings"></use></svg><span>设置</span>
-          </button>
-          <button class="nav-item subtle" type="button">
-            <svg><use href="#icon-logout"></use></svg><span>退出</span>
-          </button>
+          <button class="nav-item subtle" type="button" data-open-modal="settings"><svg><use href="#icon-settings"></use></svg><span>设置</span></button>
+          <button class="nav-item subtle" type="button" data-action="refresh"><svg><use href="#icon-logout"></use></svg><span>刷新数据</span></button>
         </div>
       </aside>
 
@@ -134,26 +69,15 @@
         <section class="topbar" aria-label="页面概览">
           <div>
             <p class="kicker" id="greeting">下午好！</p>
-            <h1>欢迎回来，今天也要元气满满哦~</h1>
+            <h1 id="welcome-copy">欢迎回来，今天也要元气满满哦~</h1>
           </div>
 
           <div class="top-actions" aria-label="快捷工具栏">
-            <button type="button" class="icon-button" aria-label="收藏主页">
-              <svg><use href="#icon-star"></use></svg>
-            </button>
-            <button type="button" class="icon-button" aria-label="打开文档">
-              <svg><use href="#icon-doc"></use></svg>
-            </button>
-            <button type="button" class="icon-button" aria-label="主题衣橱">
-              <svg><use href="#icon-heart"></use></svg>
-            </button>
-            <button type="button" class="icon-button" aria-label="通知">
-              <svg><use href="#icon-bell"></use></svg>
-            </button>
-            <button type="button" class="date-pill" aria-label="今天日期">
-              <svg><use href="#icon-calendar"></use></svg>
-              <span id="top-date">5月30日 星期六</span>
-            </button>
+            <button type="button" class="icon-button" data-open-modal="favorite" aria-label="新增收藏"><svg><use href="#icon-star"></use></svg></button>
+            <button type="button" class="icon-button" data-open-modal="document" aria-label="新建文档"><svg><use href="#icon-doc"></use></svg></button>
+            <button type="button" class="icon-button" data-open-modal="note" aria-label="记录灵感"><svg><use href="#icon-heart"></use></svg></button>
+            <button type="button" class="icon-button" data-open-modal="mail" aria-label="写一封本地邮件"><svg><use href="#icon-bell"></use></svg></button>
+            <button type="button" class="date-pill" aria-label="今天日期"><svg><use href="#icon-calendar"></use></svg><span id="top-date">5月30日 星期六</span></button>
           </div>
         </section>
 
@@ -161,37 +85,30 @@
           <article class="panel music-panel" id="music">
             <div class="panel-header">
               <h2><svg><use href="#icon-music"></use></svg>音乐</h2>
-              <button class="tiny-icon" type="button" aria-label="刷新音乐">↻</button>
+              <div class="panel-actions">
+                <button class="tiny-icon" type="button" data-music="prev" aria-label="上一首">‹</button>
+                <button class="tiny-icon" type="button" data-music="next" aria-label="下一首">›</button>
+              </div>
             </div>
             <div class="music-card">
-              <div class="album-art">
-                <img src="./assets/sakura-room.png" alt="青空のラプソディ 封面" />
-              </div>
+              <div class="album-art" aria-hidden="true"></div>
               <div class="music-info">
                 <div>
-                  <h3>青空のラプソディ</h3>
-                  <p>物语シリーズ OST</p>
+                  <h3 id="track-title">青空のラプソディ</h3>
+                  <p id="track-artist">物语シリーズ OST</p>
                 </div>
-                <button class="heart-button active" type="button" aria-label="喜欢这首歌">
-                  <svg><use href="#icon-heart"></use></svg>
-                </button>
+                <button class="heart-button active" type="button" data-music="like" aria-label="喜欢这首歌"><svg><use href="#icon-heart"></use></svg></button>
                 <div class="waveform" aria-hidden="true">
                   <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
                   <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
                 </div>
-                <div class="track-time">
-                  <span id="music-current">01:24</span>
-                  <span>/ 04:35</span>
-                </div>
+                <div class="track-time"><span id="music-current">00:00</span><span id="music-duration">/ 00:00</span></div>
                 <div class="progress" aria-hidden="true"><span id="music-progress"></span></div>
                 <div class="player-controls">
-                  <button type="button" aria-label="随机播放">↝</button>
-                  <button type="button" aria-label="上一首">◀</button>
-                  <button class="play-toggle" type="button" aria-label="播放或暂停">
-                    <svg class="play-icon"><use href="#icon-pause"></use></svg>
-                  </button>
-                  <button type="button" aria-label="下一首">▶</button>
-                  <button type="button" aria-label="播放列表">☷</button>
+                  <button type="button" data-music="prev" aria-label="上一首">◀</button>
+                  <button class="play-toggle" type="button" data-music="toggle" aria-label="播放或暂停"><svg class="play-icon"><use href="#icon-play"></use></svg></button>
+                  <button type="button" data-music="next" aria-label="下一首">▶</button>
+                  <button type="button" data-music="stop" aria-label="停止">■</button>
                 </div>
               </div>
             </div>
@@ -199,146 +116,109 @@
 
           <article class="panel mail-panel" id="mail">
             <div class="panel-header">
-              <h2><svg><use href="#icon-mail"></use></svg>邮件 <span class="badge">12</span></h2>
-              <button class="text-link" type="button">更多 ›</button>
+              <h2><svg><use href="#icon-mail"></use></svg>邮件 <span class="badge" id="mail-badge">0</span></h2>
+              <button class="text-link" type="button" data-open-modal="mail">写邮件 ›</button>
             </div>
-            <div class="mail-list">
-              <button type="button" class="mail-row unread">
-                <span class="mail-icon"><svg><use href="#icon-bell"></use></svg></span>
-                <span><strong>系统通知</strong><small>VPS 服务器续费提醒</small></span>
-                <time>14:32</time>
-              </button>
-              <button type="button" class="mail-row">
-                <span class="mail-icon github">GH</span>
-                <span><strong>GitHub</strong><small>登录安全提醒</small></span>
-                <time>12:18</time>
-              </button>
-              <button type="button" class="mail-row">
-                <span class="mail-icon"><svg><use href="#icon-mail"></use></svg></span>
-                <span><strong>服务商 Support</strong><small>工单 [#6721] 已回复</small></span>
-                <time>10:45</time>
-              </button>
-              <button type="button" class="mail-row">
-                <span class="mail-icon paper">✈</span>
-                <span><strong>Newsletter</strong><small>本周精选内容</small></span>
-                <time>昨天</time>
-              </button>
-              <button type="button" class="mail-row">
-                <span class="mail-avatar">小</span>
-                <span><strong>朋友 小明</strong><small>周末一起去看展吧！</small></span>
-                <time>昨天</time>
-              </button>
-            </div>
+            <div class="mail-list" id="mail-list"></div>
           </article>
 
           <article class="panel weather-panel" id="weather">
             <div class="panel-header">
               <h2><svg><use href="#icon-weather"></use></svg>天气</h2>
+              <button class="text-link" type="button" data-action="weather">刷新</button>
             </div>
             <div class="weather-main">
               <div>
-                <strong>22<span>°C</span></strong>
-                <p>多云</p>
-                <small>体感 21°C</small>
+                <strong><span id="weather-temp">--</span><span>°C</span></strong>
+                <p id="weather-label">加载中</p>
+                <small>体感 <span id="weather-feels">--</span>°C</small>
               </div>
-              <div class="sun-cloud" aria-hidden="true">
-                <span class="sun"></span>
-                <span class="cloud"></span>
-              </div>
+              <div class="sun-cloud" aria-hidden="true"><span class="sun"></span><span class="cloud"></span></div>
             </div>
             <dl class="weather-stats">
-              <div><dt>湿度</dt><dd>56%</dd></div>
-              <div><dt>风速</dt><dd>12 km/h</dd></div>
-              <div><dt>空气优</dt><dd>38</dd></div>
+              <div><dt>湿度</dt><dd id="weather-humidity">--%</dd></div>
+              <div><dt>风速</dt><dd id="weather-wind">-- km/h</dd></div>
+              <div><dt>来源</dt><dd id="weather-source">--</dd></div>
             </dl>
-            <p class="location">上海市 · 浦东新区</p>
+            <p class="location" id="weather-location">--</p>
           </article>
 
           <article class="panel time-panel" id="time">
-            <div class="panel-header">
-              <h2><svg><use href="#icon-clock"></use></svg>时间</h2>
-            </div>
-            <div class="clock" id="clock">14:36:52</div>
-            <p class="date-line" id="date-line">2026-05-30　星期六</p>
-            <button class="quote-pill" type="button">如花美眷，似水流年。</button>
+            <div class="panel-header"><h2><svg><use href="#icon-clock"></use></svg>时间</h2></div>
+            <div class="clock" id="clock">--:--:--</div>
+            <p class="date-line" id="date-line">---- -- --</p>
+            <button class="quote-pill" type="button" id="quote-pill">如花美眷，似水流年。</button>
             <div class="panel-doodles" aria-hidden="true">☆ ✧ ♡</div>
           </article>
 
           <article class="panel docs-panel" id="docs">
             <div class="panel-header">
               <h2><svg><use href="#icon-folder"></use></svg>最近文档</h2>
-              <button class="text-link" type="button">更多 ›</button>
+              <div class="panel-actions">
+                <button class="text-link" type="button" data-open-modal="document">新建</button>
+                <button class="text-link" type="button" data-action="upload">上传</button>
+              </div>
             </div>
-            <div class="docs-list">
-              <button class="doc-row" type="button"><span class="file md">M</span><strong>个人知识库.md</strong><time>05-30 14:12</time><small>12.4 KB</small></button>
-              <button class="doc-row" type="button"><span class="file pdf">PDF</span><strong>项目计划书 v2.0.pdf</strong><time>05-30 10:03</time><small>2.1 MB</small></button>
-              <button class="doc-row" type="button"><span class="file word">W</span><strong>读书笔记《小王子》.docx</strong><time>05-29 22:18</time><small>1.3 MB</small></button>
-              <button class="doc-row" type="button"><span class="file fig">F</span><strong>设计规范（最终版）.fig</strong><time>05-29 18:45</time><small>18.6 MB</small></button>
-              <button class="doc-row" type="button"><span class="file xls">X</span><strong>周报 2026-05-29.xlsx</strong><time>05-29 09:30</time><small>96.8 KB</small></button>
-              <button class="doc-row" type="button"><span class="file md">M</span><strong>会议记录 2026-05-16.md</strong><time>05-16 16:27</time><small>8.7 KB</small></button>
-            </div>
+            <div class="docs-list" id="docs-list"></div>
           </article>
 
           <article class="panel fav-panel" id="favorites">
             <div class="panel-header">
               <h2><svg><use href="#icon-star"></use></svg>收藏</h2>
-              <button class="text-link" type="button">更多 ›</button>
+              <button class="text-link" type="button" data-open-modal="favorite">添加 ›</button>
             </div>
-            <div class="fav-grid">
-              <a href="https://www.bilibili.com" target="_blank" rel="noreferrer"><span class="site-icon bili">哔</span><strong>哔哩哔哩</strong><small>bilibili.com</small></a>
-              <a href="https://sspai.com" target="_blank" rel="noreferrer"><span class="site-icon pi">π</span><strong>少数派</strong><small>sspai.com</small></a>
-              <a href="https://github.com" target="_blank" rel="noreferrer"><span class="site-icon gh">GH</span><strong>GitHub</strong><small>github.com</small></a>
-              <a href="https://weibo.com" target="_blank" rel="noreferrer"><span class="site-icon wb">微</span><strong>微博</strong><small>weibo.com</small></a>
-              <a href="https://v2ex.com" target="_blank" rel="noreferrer"><span class="site-icon v2">V</span><strong>V2EX</strong><small>v2ex.com</small></a>
-              <a href="https://www.pixiv.net" target="_blank" rel="noreferrer"><span class="site-icon px">P</span><strong>pixiv</strong><small>pixiv.net</small></a>
-              <a href="https://www.acfun.cn" target="_blank" rel="noreferrer"><span class="site-icon ac">A</span><strong>AcFun</strong><small>acfun.cn</small></a>
-              <a href="https://www.youtube.com" target="_blank" rel="noreferrer"><span class="site-icon yt">▶</span><strong>YouTube</strong><small>youtube.com</small></a>
-              <button class="add-link" type="button"><svg><use href="#icon-plus"></use></svg><strong>添加</strong></button>
-            </div>
+            <div class="fav-grid" id="favorites-grid"></div>
           </article>
 
           <article class="panel vps-panel" id="vps">
             <div class="panel-header">
               <h2><svg><use href="#icon-server"></use></svg>VPS 状态</h2>
-              <button class="text-link" type="button">更多 ›</button>
+              <button class="text-link" type="button" data-action="system">刷新 ›</button>
             </div>
-            <div class="vps-title">
-              <span>Debian 12 <small>(bookworm)</small></span>
-              <strong><i></i>正常运行</strong>
-            </div>
-            <div class="meter-row"><span>CPU</span><div class="meter"><i style="width: 32%"></i></div><b>32%</b></div>
-            <div class="meter-row"><span>内存</span><div class="meter blue"><i style="width: 58%"></i></div><b>2.3 / 4 GB</b></div>
-            <div class="meter-row"><span>磁盘</span><div class="meter amber"><i style="width: 41%"></i></div><b>41 / 100 GB</b></div>
-            <div class="network-row">
-              <span>网络</span>
-              <b>↑ 1.2 MB/s</b>
-              <b>↓ 2.4 MB/s</b>
-            </div>
-            <div class="runtime-row">
-              <span>运行时间</span>
-              <b>18 天 7 小时 32 分钟</b>
-            </div>
+            <div class="vps-title"><span id="system-platform">Local Node</span><strong><i></i><span id="system-health">读取中</span></strong></div>
+            <div class="meter-row"><span>CPU</span><div class="meter"><i id="cpu-meter" style="width: 0%"></i></div><b id="cpu-text">--%</b></div>
+            <div class="meter-row"><span>内存</span><div class="meter blue"><i id="memory-meter" style="width: 0%"></i></div><b id="memory-text">--</b></div>
+            <div class="meter-row"><span>磁盘</span><div class="meter amber"><i id="disk-meter" style="width: 0%"></i></div><b id="disk-text">--</b></div>
+            <div class="network-row"><span>网络</span><b id="network-up">↑ --</b><b id="network-down">↓ --</b></div>
+            <div class="runtime-row"><span>运行时间</span><b id="runtime-text">--</b></div>
             <div class="vps-actions">
-              <button type="button">终端</button>
-              <button type="button">重启</button>
-              <button type="button" class="danger">关机</button>
+              <button type="button" data-system-action="terminal">终端</button>
+              <button type="button" data-system-action="restart">重启</button>
+              <button type="button" class="danger" data-system-action="shutdown">关机</button>
             </div>
           </article>
         </section>
 
         <section class="quick-panel" aria-label="快捷操作">
-          <h2>快捷操作</h2>
-          <div class="quick-actions">
-            <button type="button"><svg><use href="#icon-doc"></use></svg>新建文档</button>
-            <button type="button"><svg><use href="#icon-upload"></use></svg>上传文件</button>
-            <button type="button"><svg><use href="#icon-star"></use></svg>新建笔记</button>
-            <button type="button"><svg><use href="#icon-heart"></use></svg>记录灵感</button>
-            <button type="button"><svg><use href="#icon-calendar"></use></svg>待办清单</button>
-            <button type="button"><svg><use href="#icon-plus"></use></svg>全部标签</button>
+          <div class="quick-head">
+            <h2>快捷操作</h2>
+            <form id="todo-form" class="inline-form">
+              <input name="title" type="text" placeholder="添加待办" autocomplete="off" />
+              <button type="submit">加入</button>
+            </form>
           </div>
+          <div class="quick-actions">
+            <button type="button" data-open-modal="document"><svg><use href="#icon-doc"></use></svg>新建文档</button>
+            <button type="button" data-action="upload"><svg><use href="#icon-upload"></use></svg>上传文件</button>
+            <button type="button" data-open-modal="note"><svg><use href="#icon-star"></use></svg>新建笔记</button>
+            <button type="button" data-open-modal="favorite"><svg><use href="#icon-heart"></use></svg>新增收藏</button>
+            <button type="button" data-open-modal="mail"><svg><use href="#icon-mail"></use></svg>写本地邮件</button>
+            <button type="button" data-action="refresh"><svg><use href="#icon-check"></use></svg>同步数据</button>
+          </div>
+          <div class="todo-list" id="todo-list"></div>
         </section>
       </main>
     </div>
+
+    <input id="file-input" type="file" hidden />
+
+    <dialog class="modal" id="app-modal">
+      <div class="modal-card">
+        <button type="button" class="modal-close" data-close-modal aria-label="关闭">×</button>
+        <h2 id="modal-title">操作</h2>
+        <div id="modal-body"></div>
+      </div>
+    </dialog>
 
     <div class="toast" role="status" aria-live="polite" hidden></div>
   </body>

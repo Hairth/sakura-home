@@ -1,5 +1,8 @@
 node_modules/
 dist/
+data/db.json
+uploads/*
+!uploads/.gitkeep
 .DS_Store
 Thumbs.db
 *.log
