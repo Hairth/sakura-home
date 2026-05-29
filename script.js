@@ -67,17 +67,6 @@ function formatDuration(seconds = 0) {
   return `${pad(Math.floor(safe / 60))}:${pad(safe % 60)}`;
 }
 
-function formatBytes(bytes = 0) {
-  const units = ["B", "KB", "MB", "GB", "TB"];
-  let value = Number(bytes) || 0;
-  let unit = 0;
-  while (value >= 1024 && unit < units.length - 1) {
-    value /= 1024;
-    unit += 1;
-  }
-  return `${value.toFixed(value >= 10 || unit === 0 ? 0 : 1)} ${units[unit]}`;
-}
-
 function formatTime(iso) {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return "--";
@@ -94,16 +83,6 @@ function hostOf(url) {
   } catch {
     return url || "local";
   }
-}
-
-function formatUptime(seconds = 0) {
-  let rest = Math.floor(seconds);
-  const days = Math.floor(rest / 86400);
-  rest %= 86400;
-  const hours = Math.floor(rest / 3600);
-  rest %= 3600;
-  const minutes = Math.floor(rest / 60);
-  return `${days} 天 ${hours} 小时 ${minutes} 分钟`;
 }
 
 function showToast(message) {
@@ -320,21 +299,6 @@ async function refreshWeather() {
   $("#weather-location").textContent = weather.location;
 }
 
-async function refreshSystem() {
-  const system = await api("/api/system");
-  $("#system-platform").textContent = system.platform;
-  $("#system-health").textContent = "正常运行";
-  $("#cpu-meter").style.width = `${system.cpuPercent}%`;
-  $("#cpu-text").textContent = `${system.cpuPercent}%`;
-  $("#memory-meter").style.width = `${system.memory.percent}%`;
-  $("#memory-text").textContent = `${formatBytes(system.memory.used)} / ${formatBytes(system.memory.total)}`;
-  $("#disk-meter").style.width = `${system.disk.percent}%`;
-  $("#disk-text").textContent = `${formatBytes(system.disk.used)} / ${formatBytes(system.disk.total)}`;
-  $("#network-up").textContent = `↑ ${formatBytes(system.network.txPerSec)}/s`;
-  $("#network-down").textContent = `↓ ${formatBytes(system.network.rxPerSec)}/s`;
-  $("#runtime-text").textContent = formatUptime(system.uptimeSeconds);
-}
-
 function closeModal() {
   els.modal.close();
   els.modalBody.innerHTML = "";
@@ -453,7 +417,7 @@ async function handleModalSubmit(form) {
   }
   closeModal();
   await refreshState();
-  await Promise.allSettled([refreshWeather(), refreshSystem()]);
+  await refreshWeather();
 }
 
 async function uploadFile(file) {
@@ -477,16 +441,12 @@ document.addEventListener("click", async (event) => {
     if (action === "upload") els.fileInput.click();
     if (action === "refresh") {
       await refreshState();
-      await Promise.allSettled([refreshWeather(), refreshSystem()]);
+      await refreshWeather();
       showToast("数据已同步");
     }
     if (action === "weather") {
       await refreshWeather();
       showToast("天气已刷新");
-    }
-    if (action === "system") {
-      await refreshSystem();
-      showToast("系统状态已刷新");
     }
   }
 
@@ -564,11 +524,6 @@ document.addEventListener("click", async (event) => {
     await refreshState();
   }
 
-  const systemAction = event.target.closest("[data-system-action]");
-  if (systemAction) {
-    const result = await api(`/api/system/${systemAction.dataset.systemAction}`, { method: "POST", body: JSON.stringify({}) });
-    showToast(result.message);
-  }
 });
 
 document.addEventListener("submit", async (event) => {
@@ -617,7 +572,7 @@ updateTime();
 setInterval(updateTime, 1000);
 
 refreshState()
-  .then(() => Promise.allSettled([refreshWeather(), refreshSystem()]))
+  .then(() => refreshWeather())
   .catch((error) => showToast(error.message));
 
-setInterval(() => Promise.allSettled([refreshWeather(), refreshSystem()]), 30000);
+setInterval(() => refreshWeather(), 30000);

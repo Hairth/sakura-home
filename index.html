@@ -56,7 +56,6 @@
           <button class="nav-item" type="button" data-target="mail"><svg><use href="#icon-mail"></use></svg><span>邮件</span></button>
           <button class="nav-item" type="button" data-target="weather"><svg><use href="#icon-weather"></use></svg><span>天气</span></button>
           <button class="nav-item" type="button" data-target="time"><svg><use href="#icon-clock"></use></svg><span>时间</span></button>
-          <button class="nav-item" type="button" data-target="vps"><svg><use href="#icon-server"></use></svg><span>VPS 状态</span></button>
         </nav>
 
         <div class="sidebar-footer">
@@ -170,23 +169,6 @@
             <div class="fav-grid" id="favorites-grid"></div>
           </article>
 
-          <article class="panel vps-panel" id="vps">
-            <div class="panel-header">
-              <h2><svg><use href="#icon-server"></use></svg>VPS 状态</h2>
-              <button class="text-link" type="button" data-action="system">刷新 ›</button>
-            </div>
-            <div class="vps-title"><span id="system-platform">Local Node</span><strong><i></i><span id="system-health">读取中</span></strong></div>
-            <div class="meter-row"><span>CPU</span><div class="meter"><i id="cpu-meter" style="width: 0%"></i></div><b id="cpu-text">--%</b></div>
-            <div class="meter-row"><span>内存</span><div class="meter blue"><i id="memory-meter" style="width: 0%"></i></div><b id="memory-text">--</b></div>
-            <div class="meter-row"><span>磁盘</span><div class="meter amber"><i id="disk-meter" style="width: 0%"></i></div><b id="disk-text">--</b></div>
-            <div class="network-row"><span>网络</span><b id="network-up">↑ --</b><b id="network-down">↓ --</b></div>
-            <div class="runtime-row"><span>运行时间</span><b id="runtime-text">--</b></div>
-            <div class="vps-actions">
-              <button type="button" data-system-action="terminal">终端</button>
-              <button type="button" data-system-action="restart">重启</button>
-              <button type="button" class="danger" data-system-action="shutdown">关机</button>
-            </div>
-          </article>
         </section>
 
         <section class="quick-panel" aria-label="快捷操作">

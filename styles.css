@@ -390,10 +390,6 @@ svg use {
   grid-column: span 4;
 }
 
-.vps-panel {
-  grid-column: span 3;
-}
-
 .music-card {
   display: grid;
   grid-template-columns: minmax(132px, 38%) minmax(0, 1fr);
@@ -709,10 +705,7 @@ svg use {
   margin: 18px 0 12px;
 }
 
-.weather-stats div,
-.network-row,
-.runtime-row,
-.vps-title {
+.weather-stats div {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -928,91 +921,6 @@ svg use {
 .add-link svg {
   width: 25px;
   height: 25px;
-}
-
-.vps-title {
-  margin-bottom: 20px;
-  color: #30405e;
-}
-
-.vps-title small {
-  color: #7a89a4;
-}
-
-.vps-title strong {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: #7a89a4;
-  font-size: 0.85rem;
-}
-
-.vps-title i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #35c992;
-}
-
-.meter-row {
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 10px;
-  margin: 14px 0;
-  color: #52617b;
-  font-size: 0.85rem;
-}
-
-.meter {
-  height: 9px;
-}
-
-.meter i {
-  background: linear-gradient(90deg, #24c287, #53d69f);
-}
-
-.meter.blue i {
-  background: linear-gradient(90deg, #3898ff, #63c3ff);
-}
-
-.meter.amber i {
-  background: linear-gradient(90deg, #ff8a37, #ffc065);
-}
-
-.network-row,
-.runtime-row {
-  min-height: 34px;
-  color: #566681;
-  font-size: 0.84rem;
-}
-
-.network-row {
-  margin-top: 8px;
-  border-top: 1px solid rgba(124, 157, 202, 0.2);
-}
-
-.runtime-row {
-  border-bottom: 1px solid rgba(124, 157, 202, 0.2);
-}
-
-.vps-actions {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.vps-actions button {
-  min-height: 42px;
-  border: 1px solid rgba(124, 157, 202, 0.28);
-  border-radius: 11px;
-  color: #52617b;
-  background: rgba(255, 255, 255, 0.54);
-}
-
-.vps-actions .danger {
-  color: #eb5c6f;
 }
 
 .quick-panel {
@@ -1300,8 +1208,7 @@ svg use {
 
   .mail-panel,
   .weather-panel,
-  .time-panel,
-  .vps-panel {
+  .time-panel {
     grid-column: span 6;
   }
 }
@@ -1366,8 +1273,7 @@ svg use {
   .weather-panel,
   .time-panel,
   .docs-panel,
-  .fav-panel,
-  .vps-panel {
+  .fav-panel {
     grid-column: 1 / -1;
   }
 

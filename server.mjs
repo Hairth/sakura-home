@@ -1,8 +1,6 @@
 import { createServer } from "node:http";
 import { randomUUID } from "node:crypto";
-import { execFile } from "node:child_process";
 import { promises as fs } from "node:fs";
-import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -197,119 +195,6 @@ function publicState(db) {
   };
 }
 
-function cpuSnapshot() {
-  return os.cpus().map((cpu) => ({ ...cpu.times }));
-}
-
-function cpuUsagePercent(start, end) {
-  let idle = 0;
-  let total = 0;
-  for (let index = 0; index < start.length; index += 1) {
-    const a = start[index];
-    const b = end[index];
-    const idleDiff = b.idle - a.idle;
-    const totalDiff = Object.keys(b).reduce((sum, key) => sum + b[key] - a[key], 0);
-    idle += idleDiff;
-    total += totalDiff;
-  }
-  return total > 0 ? Math.max(0, Math.min(100, (1 - idle / total) * 100)) : 0;
-}
-
-async function getDiskStats() {
-  try {
-    const stats = await fs.statfs(__dirname);
-    const total = stats.blocks * stats.bsize;
-    const free = stats.bfree * stats.bsize;
-    return { total, free, used: total - free, percent: total ? ((total - free) / total) * 100 : 0 };
-  } catch {
-    return { total: 0, free: 0, used: 0, percent: 0 };
-  }
-}
-
-function execPowerShell(command) {
-  return new Promise((resolve) => {
-    execFile(
-      "powershell.exe",
-      ["-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", command],
-      { timeout: 4500, windowsHide: true },
-      (error, stdout) => {
-        if (error) resolve(null);
-        else resolve(stdout.trim());
-      }
-    );
-  });
-}
-
-async function getNetworkStats() {
-  if (process.platform === "win32") {
-    const output = await execPowerShell(
-      "$items=Get-CimInstance Win32_PerfFormattedData_Tcpip_NetworkInterface | Where-Object {$_.Name -notmatch 'Loopback|isatap|Teredo'}; " +
-      "$rx=($items | Measure-Object BytesReceivedPersec -Sum).Sum; " +
-      "$tx=($items | Measure-Object BytesSentPersec -Sum).Sum; " +
-      "[pscustomobject]@{rx=[double]$rx;tx=[double]$tx} | ConvertTo-Json -Compress"
-    );
-    try {
-      const parsed = JSON.parse(output);
-      return { rxPerSec: parsed.rx || 0, txPerSec: parsed.tx || 0 };
-    } catch {
-      return { rxPerSec: 0, txPerSec: 0 };
-    }
-  }
-
-  try {
-    const content = await fs.readFile("/proc/net/dev", "utf8");
-    const totals = content
-      .split("\n")
-      .filter((line) => line.includes(":") && !line.trim().startsWith("lo:"))
-      .map((line) => line.split(":")[1].trim().split(/\s+/).map(Number))
-      .reduce(
-        (sum, fields) => ({ rx: sum.rx + (fields[0] || 0), tx: sum.tx + (fields[8] || 0) }),
-        { rx: 0, tx: 0 }
-      );
-    const now = Date.now();
-    if (!getNetworkStats.previous) {
-      getNetworkStats.previous = { ...totals, now };
-      return { rxPerSec: 0, txPerSec: 0 };
-    }
-    const elapsed = Math.max(1, (now - getNetworkStats.previous.now) / 1000);
-    const result = {
-      rxPerSec: Math.max(0, (totals.rx - getNetworkStats.previous.rx) / elapsed),
-      txPerSec: Math.max(0, (totals.tx - getNetworkStats.previous.tx) / elapsed)
-    };
-    getNetworkStats.previous = { ...totals, now };
-    return result;
-  } catch {
-    return { rxPerSec: 0, txPerSec: 0 };
-  }
-}
-
-async function getSystemStatus() {
-  const start = cpuSnapshot();
-  await new Promise((resolve) => setTimeout(resolve, 120));
-  const cpu = cpuUsagePercent(start, cpuSnapshot());
-  const totalMem = os.totalmem();
-  const freeMem = os.freemem();
-  const disk = await getDiskStats();
-  const network = await getNetworkStats();
-  return {
-    platform: `${os.type()} ${os.release()}`,
-    hostname: os.hostname(),
-    cpuPercent: Number(cpu.toFixed(1)),
-    memory: {
-      total: totalMem,
-      used: totalMem - freeMem,
-      percent: Number((((totalMem - freeMem) / totalMem) * 100).toFixed(1))
-    },
-    disk: {
-      ...disk,
-      percent: Number(disk.percent.toFixed(1))
-    },
-    network,
-    uptimeSeconds: os.uptime(),
-    checkedAt: nowIso()
-  };
-}
-
 const weatherCodes = new Map([
   [0, "晴"],
   [1, "大部晴朗"],
@@ -371,11 +256,10 @@ async function routeApi(req, res, url) {
   const db = await readDb();
   const method = req.method || "GET";
   const segments = url.pathname.split("/").filter(Boolean);
-  const [api, resource, id, action] = segments;
+  const [api, resource, id] = segments;
   if (api !== "api") return false;
 
   if (method === "GET" && resource === "state") return json(res, 200, publicState(db));
-  if (method === "GET" && resource === "system") return json(res, 200, await getSystemStatus());
   if (method === "GET" && resource === "weather") return json(res, 200, await getWeather(url));
 
   if (method === "POST" && resource === "upload") {
@@ -538,14 +422,6 @@ async function routeApi(req, res, url) {
     db.settings = { ...db.settings, ...body };
     await writeDb(db);
     return json(res, 200, db.settings);
-  }
-
-  if (method === "POST" && resource === "system" && action) {
-    return json(res, 202, {
-      action,
-      accepted: true,
-      message: "本地演示模式已记录指令；部署到 VPS 后可在后端接入真实 systemctl/ssh 操作。"
-    });
   }
 
   return json(res, 404, { error: "API route not found" });

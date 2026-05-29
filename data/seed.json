@@ -77,16 +77,6 @@
   ],
   "mails": [
     {
-      "id": "mail-vps",
-      "sender": "系统通知",
-      "subject": "VPS 服务器续费提醒",
-      "body": "当前服务器续费提醒已进入待办列表，可以在 VPS 面板查看状态。",
-      "time": "2026-05-30T14:32:00.000Z",
-      "read": false,
-      "archived": false,
-      "icon": "🔔"
-    },
-    {
       "id": "mail-github",
       "sender": "GitHub",
       "subject": "登录安全提醒",
@@ -108,7 +98,6 @@
     }
   ],
   "todos": [
-    { "id": "todo-deploy", "title": "整理 VPS 部署脚本", "done": false, "createdAt": "2026-05-30T00:00:00.000Z" },
     { "id": "todo-domain", "title": "配置域名和 HTTPS", "done": false, "createdAt": "2026-05-30T00:00:00.000Z" }
   ],
   "notes": [
